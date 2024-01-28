@@ -22,7 +22,7 @@ export default function AccountForm({ user }: { user: User | null }) {
       const { data, error, status } = await supabase
         .from("profiles")
         .select(`full_name, username, website, avatar_url`)
-        .eq("id", user?.id)
+        .eq("id", user?.id || '')
         .single();
 
       if (error && status !== 406) {
@@ -80,7 +80,7 @@ export default function AccountForm({ user }: { user: User | null }) {
     <div className="form-widget">
       {/* Add to the body */}
       <Avatar
-        uid={user.id}
+        uid={user?.id || ''}
         url={avatar_url}
         size={150}
         onUpload={(url) => {
