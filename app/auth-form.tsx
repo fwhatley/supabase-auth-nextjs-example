@@ -15,7 +15,7 @@ export default function AuthForm() {
       theme="dark"
       showLinks={false}
       providers={[]}
-      redirectTo="http://localhost:3000/auth/callback"
+      redirectTo={window.location.protocol + "//" + window.location.host + "/auth/callback"}
     />
   )
 }
