@@ -7,6 +7,13 @@ import { Database } from './database.types'
 export default function AuthForm() {
   const supabase = createClientComponentClient<Database>()
 
+  const getRedirectUrl = () => {
+    if (window) {
+      return window.location.protocol + "//" + window.location.host + "/auth/callback"
+    }
+    return 'https://supabase-auth-nextjs-example-ykzk.vercel.app/auth/callback'
+  }
+
   return (
     <Auth
       supabaseClient={supabase}
@@ -15,7 +22,7 @@ export default function AuthForm() {
       theme="dark"
       showLinks={false}
       providers={[]}
-      redirectTo={window.location.protocol + "//" + window.location.host + "/auth/callback"}
+      // redirectTo={getRedirectUrl()}
     />
   )
 }
