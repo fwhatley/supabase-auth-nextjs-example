@@ -19,13 +19,6 @@ export default function AuthForm() {
     return url
   }
 
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'github',
-    options: {
-      redirectTo: getURL(),
-    },
-  })
-
 
   return (
     <Auth
